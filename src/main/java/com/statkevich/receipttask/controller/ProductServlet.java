@@ -8,6 +8,7 @@ import com.statkevich.receipttask.exceptions.DiscountCardNotExistException;
 import com.statkevich.receipttask.exceptions.ProductNotExistException;
 import com.statkevich.receipttask.service.ProductService;
 import com.statkevich.receipttask.service.singletonfactories.ProductServiceSingleton;
+import com.statkevich.receipttask.util.ValidationUtil;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +46,12 @@ public class ProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         BufferedReader reader = req.getReader();
         ProductCreateDto productCreateDto = xmlMapper.readValue(reader, ProductCreateDto.class);
-        productService.save(productCreateDto);
+        boolean validated = ValidationUtil.validate(productCreateDto);
+        if (validated) {
+            productService.save(productCreateDto);
+        } else {
+            resp.sendError(HttpServletResponse.SC_EXPECTATION_FAILED);
+        }
     }
 
     @Override
