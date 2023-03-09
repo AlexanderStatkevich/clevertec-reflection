@@ -26,7 +26,8 @@ public class ReceiptServlet extends HttpServlet {
 
     private final WebInputParser webInputParser = new WebInputParser(ProductServiceSingleton.getInstance());
     private final OrderService orderService = OrderServiceSingleton.getInstance();
-    private final ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -34,7 +35,6 @@ public class ReceiptServlet extends HttpServlet {
             req.setCharacterEncoding("UTF-8");
             resp.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = resp.getWriter();
-
             Map<String, String[]> parameterMap = req.getParameterMap();
             OrderDto orderDto = webInputParser.parse(parameterMap);
             ReceiptDto receiptDto = orderService.processingOrder(orderDto);
@@ -46,6 +46,5 @@ public class ReceiptServlet extends HttpServlet {
         } catch (DataAccessException | ProductNotExistException | DiscountCardNotExistException e) {
             resp.sendError(HttpServletResponse.SC_EXPECTATION_FAILED, e.getMessage());
         }
-
     }
 }
