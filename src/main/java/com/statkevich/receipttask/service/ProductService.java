@@ -10,6 +10,10 @@ import com.statkevich.receipttask.service.api.IProductService;
 
 import java.util.List;
 
+/**
+ * Described class bind storage and output of application.
+ * As well as uses CRUD operations for this purpose.
+ */
 public class ProductService implements IProductService {
 
     private final ProductDao productDao;

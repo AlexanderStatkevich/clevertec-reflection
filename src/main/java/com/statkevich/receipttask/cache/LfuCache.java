@@ -5,23 +5,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Cache
+ * Implementation of least frequently used cache algorithm.
  *
  * @see com.statkevich.receipttask.cache.LruCache
  */
 
 public class LfuCache implements Cache {
-    private final int capacity;
+    private final int CACHE_CAPACITY;
     private final Map<Object, Node> pointerMap;
 
     public LfuCache(int capacity) {
-        this.capacity = capacity;
+        this.CACHE_CAPACITY = capacity;
         this.pointerMap = new HashMap<>();
     }
 
     @Override
     public void put(Object key, Object value) {
-        if (pointerMap.size() == capacity) {
+        if (pointerMap.size() == CACHE_CAPACITY) {
             Object leastFrequentlyKey = findLFU();
             pointerMap.remove(leastFrequentlyKey);
         }
@@ -58,8 +58,8 @@ public class LfuCache implements Cache {
 
 
     private static class Node {
-        Object value;
-        int frequency;
+        private Object value;
+        private int frequency;
 
         public Node(Object value, int frequency) {
             this.value = value;

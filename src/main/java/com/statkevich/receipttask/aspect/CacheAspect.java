@@ -17,6 +17,11 @@ import org.aspectj.lang.reflect.MethodSignature;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
+/**
+ * Described class serves to intercept method calls
+ * and include caching into annotated methods.
+ * Using {@link com.statkevich.receipttask.cache.Cache} class for caching.
+ */
 @Aspect
 public class CacheAspect {
 

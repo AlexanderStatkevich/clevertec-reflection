@@ -1,6 +1,5 @@
 package com.statkevich.receipttask.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.statkevich.receipttask.domain.dto.ProductCreateDto;
 import com.statkevich.receipttask.domain.dto.ProductDto;
@@ -20,9 +19,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "ProductServlet", urlPatterns = "/products")
 public class ProductServlet extends HttpServlet {
-
     private final ProductService productService = ProductServiceSingleton.getInstance();
-    private final ObjectMapper objectMapper = new ObjectMapper();
     private final XmlMapper xmlMapper = new XmlMapper();
 
 

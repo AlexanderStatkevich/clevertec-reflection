@@ -16,7 +16,10 @@ import com.statkevich.receipttask.service.api.IOrderService;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
-
+/**
+ * Described class implements core operations, such as
+ * processing order to create receipt.
+ */
 public class OrderService implements IOrderService {
     public static final TenPercentOffForMoreThanFiveProducts BASE_CALCULATOR = new TenPercentOffForMoreThanFiveProducts(new FullCostCalculator());
     private final DiscountCardService discountCardService;
@@ -27,8 +30,10 @@ public class OrderService implements IOrderService {
     }
 
     /**
-     * @param orderDTO
-     * @return
+     * Method uses input data, calculator, side services to evaluate resulting receipt.
+     *
+     * @param orderDTO represent input of customer order
+     * @return receipt for next processing and output
      */
     @Override
     public ReceiptDto processingOrder(OrderDto orderDTO) {

@@ -5,6 +5,11 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+/**
+ * Implementation of least recently used cache algorithm.
+ *
+ * @see com.statkevich.receipttask.cache.LfuCache
+ */
 public class LruCache implements Cache {
     private final Deque<Object> cacheObjectList = new LinkedList<>();
     private final Map<Object, Node> pointerMap = new HashMap<>();

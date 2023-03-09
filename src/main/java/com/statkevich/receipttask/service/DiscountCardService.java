@@ -7,6 +7,10 @@ import com.statkevich.receipttask.domain.mapper.DiscountCardMapper;
 import com.statkevich.receipttask.domain.mapper.DiscountCardMapperImpl;
 import com.statkevich.receipttask.service.api.IDiscountCardService;
 
+/**
+ * Described class bind storage and output of application.
+ * As well as uses CRUD operations for this purpose.
+ */
 public class DiscountCardService implements IDiscountCardService {
 
     private final DiscountCardDao discountCardDao;

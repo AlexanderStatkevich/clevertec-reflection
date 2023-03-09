@@ -16,6 +16,10 @@ public final class CacheHolder {
     private CacheHolder() {
     }
 
+    /**
+     * @param name passing to get cache from storage
+     * @return corresponding cache from storage
+     */
     public static Cache get(String name) {
         Cache cache = CACHE_MAP.get(name);
         if (null == cache) {
