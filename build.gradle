@@ -18,7 +18,6 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-
 dependencies {
     testImplementation(
             "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
@@ -35,10 +34,11 @@ dependencies {
             'org.postgresql:postgresql:42.5.1',
             "org.mapstruct:mapstruct:${mapstructVersion}",
             'org.yaml:snakeyaml:2.0',
-            'org.aspectj:aspectjrt:1.9.8',
+            'org.aspectj:aspectjrt:1.9.19',
             "org.apache.logging.log4j:log4j-core:${log4jVersion}",
             "org.apache.logging.log4j:log4j-api:${log4jVersion}",
-            "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
+            "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}",
+            'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.11.1'
     )
 
     compileOnly(

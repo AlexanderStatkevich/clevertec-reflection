@@ -1,6 +1,7 @@
 package com.statkevich.receipttask.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.statkevich.receipttask.domain.dto.ProductCreateDto;
 import com.statkevich.receipttask.domain.dto.ProductDto;
 import com.statkevich.receipttask.exceptions.DataAccessException;
@@ -22,6 +23,8 @@ public class ProductServlet extends HttpServlet {
 
     private final ProductService productService = ProductServiceSingleton.getInstance();
     private final ObjectMapper objectMapper = new ObjectMapper();
+    private final XmlMapper xmlMapper = new XmlMapper();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -31,7 +34,7 @@ public class ProductServlet extends HttpServlet {
             PrintWriter writer = resp.getWriter();
             Long id = Long.valueOf(req.getParameter("id"));
             ProductDto productDto = productService.get(id);
-            String cardInJson = objectMapper.writeValueAsString(productDto);
+            String cardInJson = xmlMapper.writeValueAsString(productDto);
             writer.write(cardInJson);
 
         } catch (IOException e) {
@@ -44,7 +47,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         BufferedReader reader = req.getReader();
-        ProductCreateDto productCreateDto = objectMapper.readValue(reader, ProductCreateDto.class);
+        ProductCreateDto productCreateDto = xmlMapper.readValue(reader, ProductCreateDto.class);
         productService.save(productCreateDto);
     }
 
@@ -57,7 +60,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         BufferedReader reader = req.getReader();
-        ProductDto productDto = objectMapper.readValue(reader, ProductDto.class);
+        ProductDto productDto = xmlMapper.readValue(reader, ProductDto.class);
         productService.update(productDto);
     }
 }

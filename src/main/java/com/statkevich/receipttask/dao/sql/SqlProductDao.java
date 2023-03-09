@@ -2,6 +2,7 @@ package com.statkevich.receipttask.dao.sql;
 
 import com.statkevich.receipttask.annotation.CacheEvict;
 import com.statkevich.receipttask.annotation.CachePut;
+import com.statkevich.receipttask.annotation.Cacheable;
 import com.statkevich.receipttask.dao.api.ProductDao;
 import com.statkevich.receipttask.domain.CommonProduct;
 import com.statkevich.receipttask.domain.SaleType;
@@ -48,7 +49,7 @@ public class SqlProductDao extends SqlBaseDao<CommonProduct, Long> implements Pr
     }
 
     @Override
-//    @Cacheable(name = "product")
+    @Cacheable(name = "product")
     public CommonProduct get(Long key) {
         return super.get(key);
     }

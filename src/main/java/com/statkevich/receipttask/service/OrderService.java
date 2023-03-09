@@ -26,6 +26,10 @@ public class OrderService implements IOrderService {
         this.discountCardService = discountCardService;
     }
 
+    /**
+     * @param orderDTO
+     * @return
+     */
     @Override
     public ReceiptDto processingOrder(OrderDto orderDTO) {
         List<PositionDto> positionDtoList = orderDTO.positionDtoList();
