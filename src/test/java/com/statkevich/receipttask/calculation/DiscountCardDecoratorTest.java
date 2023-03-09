@@ -43,7 +43,8 @@ class DiscountCardDecoratorTest {
         DiscountCardDecorator discountCardDecorator = new DiscountCardDecorator(
                 new TenPercentOffForMoreThanFiveProducts(
                         new FullCostCalculator()),
-                new DiscountCard("1234", BigDecimal.valueOf(0.05)));
+                new DiscountCard("1234",
+                        BigDecimal.valueOf(0.05)));
 
         ReceiptRow actual = discountCardDecorator.calculate(toCalculate);
 

@@ -38,10 +38,10 @@ class WebInputParserTest {
     @Test
     void checkParserCorrectness() {
         CommonProduct milk = CommonProduct.builder()
-                .setId(1L)
-                .setName("Milk")
-                .setPrice(BigDecimal.valueOf(2.0))
-                .setSaleType(Set.of()).build();
+                .id(1L)
+                .name("Milk")
+                .price(BigDecimal.valueOf(2.0))
+                .saleTypes(Set.of()).build();
 
         when(productService.getProducts(List.of(1L))).
                 thenReturn(List.of(milk));

@@ -1,5 +1,6 @@
-package com.statkevich.receipttask.dao.sql;
+package com.statkevich.receipttask.dao;
 
+import com.statkevich.receipttask.dao.sql.SqlProductDao;
 import com.statkevich.receipttask.domain.CommonProduct;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

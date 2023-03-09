@@ -1,5 +1,6 @@
-package com.statkevich.receipttask.dao.sql;
+package com.statkevich.receipttask.dao;
 
+import com.statkevich.receipttask.dao.sql.SqlDiscountCardDao;
 import com.statkevich.receipttask.domain.DiscountCard;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,7 +43,7 @@ class SqlDiscountCardDaoTest {
              Statement statement = connection.createStatement()) {
             String sql = """
                     DELETE from discount_cards;
-                                        
+
                             INSERT INTO discount_cards (card_number, discount)
                             VALUES ('0000', 0.0),
                                     ('1111', 0.03),

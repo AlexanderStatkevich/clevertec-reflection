@@ -1,5 +1,6 @@
 package com.statkevich.receipttask.service;
 
+import com.statkevich.receipttask.domain.dto.DiscountCardDto;
 import com.statkevich.receipttask.dto.OrderDto;
 import com.statkevich.receipttask.dto.ReceiptDto;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +16,6 @@ import java.util.List;
 import java.util.Set;
 
 import static com.statkevich.receipttask.testutil.model.CommonProductTestBuilder.aProduct;
-import static com.statkevich.receipttask.testutil.model.DiscountCardTestBuilder.aCard;
 import static com.statkevich.receipttask.testutil.model.PositionDtoTestBuilder.aPositionDto;
 import static com.statkevich.receipttask.testutil.model.ReceiptRowTestBuilder.aReceiptRow;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,7 +27,6 @@ class OrderServiceTest {
     @Mock
     private DiscountCardService discountCardService;
     private OrderService orderService;
-
 
     @BeforeEach
     void init() {
@@ -47,7 +46,7 @@ class OrderServiceTest {
                                     .withQuantity(3).build()),
                     "1111");
 
-            when(discountCardService.get("1111")).thenReturn(aCard().build());
+            when(discountCardService.get("1111")).thenReturn(new DiscountCardDto("1111", BigDecimal.valueOf(0.03)));
 
             ReceiptDto actual = orderService.processingOrder(orderDtoWithCard);
 

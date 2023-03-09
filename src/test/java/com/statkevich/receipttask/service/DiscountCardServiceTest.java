@@ -2,6 +2,9 @@ package com.statkevich.receipttask.service;
 
 import com.statkevich.receipttask.dao.api.DiscountCardDao;
 import com.statkevich.receipttask.domain.DiscountCard;
+import com.statkevich.receipttask.domain.dto.DiscountCardDto;
+import com.statkevich.receipttask.domain.mapper.DiscountCardMapper;
+import com.statkevich.receipttask.domain.mapper.DiscountCardMapperImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,6 +24,8 @@ class DiscountCardServiceTest {
 
     private DiscountCardService discountCardService;
 
+    private final DiscountCardMapper mapper = new DiscountCardMapperImpl();
+
     @BeforeEach
     void setUp() {
         discountCardService = new DiscountCardService(discountCardDao);
@@ -31,8 +36,8 @@ class DiscountCardServiceTest {
     void checkGetMethodReturningCorrectEntity() {
         DiscountCard expected = aCard().build();
         when(discountCardDao.get("1111")).thenReturn(expected);
-        DiscountCard actual = discountCardService.get("1111");
-
+        DiscountCardDto discountCardDto = discountCardService.get("1111");
+        DiscountCard actual = mapper.toEntity(discountCardDto);
         assertThat(actual).isEqualTo(expected);
     }
 }

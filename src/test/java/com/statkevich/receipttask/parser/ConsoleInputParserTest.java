@@ -35,10 +35,10 @@ class ConsoleInputParserTest {
         OrderDto expected = new OrderDto(
                 List.of(aPositionDto()
                         .withProduct(CommonProduct.builder()
-                                .setId(1L)
-                                .setName("Milk")
-                                .setPrice(BigDecimal.valueOf(2.0))
-                                .setSaleType(Set.of()).build())
+                                .id(1L)
+                                .name("Milk")
+                                .price(BigDecimal.valueOf(2.0))
+                                .saleTypes(Set.of()).build())
                         .withQuantity(2).build()),
                 "1234");
         OrderDto actual = consoleInputParser.parse(orderArray);
