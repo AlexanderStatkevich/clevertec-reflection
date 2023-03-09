@@ -1,24 +1,20 @@
 package com.statkevich.receipttask.domain;
 
+import com.statkevich.receipttask.annotation.CacheKey;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Getter
+@RequiredArgsConstructor
+@Builder
 public class DiscountCard {
+    @CacheKey
     private final String cardNumber;
     private final BigDecimal discount;
-
-    public DiscountCard(String cardNumber, BigDecimal discount) {
-        this.cardNumber = cardNumber;
-        this.discount = discount;
-    }
-
-    public String getCardNumber() {
-        return cardNumber;
-    }
-
-    public BigDecimal getDiscount() {
-        return discount;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -32,13 +28,5 @@ public class DiscountCard {
     @Override
     public int hashCode() {
         return Objects.hash(cardNumber, discount);
-    }
-
-    @Override
-    public String toString() {
-        return "DiscountCard{" +
-                "cardNumber='" + cardNumber + '\'' +
-                ", discount=" + discount +
-                '}';
     }
 }
