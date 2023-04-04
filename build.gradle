@@ -19,15 +19,6 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    testImplementation(
-            "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
-            "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
-            "org.testcontainers:postgresql:${testcontainersVersion}",
-            "org.testcontainers:junit-jupiter:${testcontainersVersion}",
-            'org.assertj:assertj-core:3.24.2',
-            'org.mockito:mockito-core:5.1.1',
-            'org.mockito:mockito-junit-jupiter:2.17.0')
-
     implementation(
             'com.fasterxml.jackson.core:jackson-databind:2.14.1',
             'org.apache.commons:commons-dbcp2:2.9.0',
@@ -50,6 +41,15 @@ dependencies {
             "org.mapstruct:mapstruct-processor:${mapstructVersion}")
 
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+            "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
+            "org.testcontainers:postgresql:${testcontainersVersion}",
+            "org.testcontainers:junit-jupiter:${testcontainersVersion}",
+            'org.assertj:assertj-core:3.24.2',
+            'org.mockito:mockito-core:5.1.1',
+            'org.mockito:mockito-junit-jupiter:2.17.0')
 }
 
 test {

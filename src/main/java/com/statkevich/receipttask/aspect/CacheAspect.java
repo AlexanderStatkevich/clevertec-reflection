@@ -79,6 +79,7 @@ public class CacheAspect {
                         throw new RuntimeException(e);
                     }
                 })
-                .findAny().orElseThrow();
+                .findAny()
+                .orElseThrow();
     }
 }
