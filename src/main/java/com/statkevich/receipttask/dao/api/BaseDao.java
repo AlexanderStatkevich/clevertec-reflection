@@ -14,5 +14,4 @@ public interface BaseDao<E, K> {
     E update(E entity);
 
     void delete(K key);
-
 }
